@@ -1,0 +1,26 @@
+{
+  "name": "coding-project",
+  "version": "1.0.0",
+  "description": "Welcome to the Harbor take home project. We hope this is a good opportunity for you to showcase your skills.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mrahul17/coding-project.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mrahul17/coding-project/issues"
+  },
+  "homepage": "https://github.com/mrahul17/coding-project#readme",
+  "dependencies": {
+    "body-parser": "^1.20.3",
+    "express": "^4.21.0",
+    "sequelize": "^6.37.3",
+    "sqlite3": "^5.1.7"
+  }
+}
