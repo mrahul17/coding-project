@@ -4,6 +4,7 @@
   "description": "Welcome to the Harbor take home project. We hope this is a good opportunity for you to showcase your skills.",
   "main": "index.js",
   "scripts": {
+    "start": "npm i && node ./scripts/seedDb.js && node src/server.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "seed": "node ./scripts/seedDb.js"
   },
