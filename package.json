@@ -4,7 +4,8 @@
   "description": "Welcome to the Harbor take home project. We hope this is a good opportunity for you to showcase your skills.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "seed": "node ./scripts/seedDb.js"
   },
   "repository": {
     "type": "git",
@@ -20,6 +21,7 @@
   "dependencies": {
     "body-parser": "^1.20.3",
     "express": "^4.21.0",
+    "moment-timezone": "^0.5.46",
     "sequelize": "^6.37.3",
     "sqlite3": "^5.1.7"
   }
