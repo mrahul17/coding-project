@@ -14,7 +14,7 @@ const app = express();
 app.use(bodyParser.json());
 app.set("sequelize", sequelize);
 
-app.post("/api/users", async (req, res) => {
+app.post("/api/users/signup", async (req, res) => {
   try {
     const user = await User.create({
       username: req.body.username,
@@ -108,13 +108,11 @@ app.get("/api/events/:id", async (req, res) => {
   }
 });
 
-// API to get available time slots for a user within a date range
-app.get("/api/users/:userId/availability", async (req, res) => {
+app.get("/api/users/:userId/schedule", async (req, res) => {
   const { userId } = req.params;
   const { date } = req.query;
   const AvailabilityService = require("./services/availabilityService");
 
-  // Basic validation
   if (!date) {
     return res.status(400).json({ message: "date is required" });
   }
@@ -140,25 +138,7 @@ app.get("/api/users/:userId/availability", async (req, res) => {
 /*
   API to create an event with a host, start time, end time, and guest
   If guest email is passed,  a new user
-  and add to attendees
-
-  Request body:
-  {
-    "hostId": 1,
-    "startTime": "2024-10-08T10:00:00",
-    "endTime": "2024-10-08T11:00:00",
-    "guests": [2]
-  }
-
-  Response:
-  {
-    "id": 1,
-    "hostId": 1,
-    "startTime": "2024-10-08T10:00:00.000Z",
-    "endTime": "2024-10-08T11:00:00.000Z",
-    "attendees": [2]
-  }
-
+  and add to attendee
 */
 app.post("/api/events", async (req, res) => {
   const { hostId, startTime, endTime, attendees = [], guestEmail } = req.body;
@@ -248,28 +228,8 @@ app.post("/api/events", async (req, res) => {
   }
 });
 
-// curl -X POST http://localhost:3001/api/events -H "Content-Type: application/json" -d '{
-//   "hostId": 1,
-//   "startTime": "2024-10-08T10:00:00",
-//   "endTime": "2024-10-08T11:00:00",
-//   "attendees": [2]
-// }'
-
 /*
  Returns the common availability slots for two users on a given date
-
-  Example request:
-  GET /api/common-availability?date=2024-10-08&userId1=1&userId2=2
-
-  Example response:
-  {
-    "commonAvailability": [
-      {
-        "start": "2024-10-08T10:00:00.000Z",
-        "end": "2024-10-08T11:00:00.000Z"
-      }
-    ]
-  }
 */
 app.get("/api/common-availability", async (req, res) => {
   const { date, userId1, userId2 } = req.query;

@@ -19,7 +19,6 @@ exports.setAvailability = async (
   });
 };
 
-// Fetch booked events for both users
 const getBookedEventsForUsers = async (userId1, userId2, date) => {
   const startOfDay = date + "T00:00:00+00:00";
   const endOfDay = date + "T23:59:59+00:00";

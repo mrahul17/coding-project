@@ -1,5 +1,3 @@
-// in this file, define the user, event and event attendee models
-
 const { DataTypes } = require("sequelize");
 const sequelize = require("../config/database");
 
